@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绝区零 · 云岿山 随便观</title>
+  
+  <!-- Google Fonts：中文字体 + 书法感 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  
+ <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-574TBJ2M');</script>
+<!-- End Google Tag Manager -->
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans SC', sans-serif;
+      background: linear-gradient(135deg, #1e1e2e, #2a1e3f, #0f1419);
+      color: #e0e0ff;
+      min-height: 100vh;
+      background-image: url('https://pbs.twimg.com/amplify_video_thumb/1930465735547203587/img/kORIAgLy6GdgEcaS.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    header {
+      background: rgba(20, 10, 40, 0.8);
+      padding: 80px 20px;
+      text-align: center;
+      border-bottom: 3px solid #ffd700;
+      box-shadow: 0 0 30px #ffd700;
+    }
+    h1 {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 3.8em;
+      margin: 0;
+      color: #ffd700;
+      text-shadow: 0 0 20px #00ffff, 0 0 40px #ffd700;
+    }
+    h1 span {
+      color: #00ffff;
+    }
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(20, 20, 50, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      backdrop-filter: blur(8px);
+    }
+    p {
+      font-size: 1.3em;
+      line-height: 1.8;
+      text-shadow: 0 0 8px #ffd700;
+    }
+    .character-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 0;
+    }
+    .character-img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #ffd700;
+      border: 3px solid #00ffff;
+      transition: transform 0.3s;
+    }
+    .character-img:hover {
+      transform: scale(1.05);
+    }
+    button {
+      padding: 18px 36px;
+      font-size: 1.5em;
+      font-family: 'Ma Shan Zheng', cursive;
+      background: linear-gradient(45deg, #ffd700, #00ffff);
+      color: #1e1e2e;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ffd700;
+      transition: all 0.3s;
+    }
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #00ffff, 0 0 60px #ffd700;
+    }
+    .scroll-prompt {
+      margin-top: 1200px;
+      font-size: 1.6em;
+      text-align: center;
+      color: #ffd700;
+      text-shadow: 0 0 20px #00ffff;
+    }
+    footer {
+      text-align: center;
+      padding: 50px;
+      color: #888;
+      text-shadow: 0 0 8px #ffd700;
+    }
+    
+    /* 求卦结果模态框（古风签筒风格） */
+    #fortune-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    .fortune-content {
+      background: linear-gradient(#2c1810, #4a2f1a);
+      padding: 40px;
+      border-radius: 20px;
+      border: 5px double #ffd700;
+      box-shadow: 0 0 40px #ffd700;
+      text-align: center;
+      max-width: 600px;
+      font-family: 'Ma Shan Zheng', cursive;
+      color: #ffd700;
+      text-shadow: 0 0 10px #000;
+    }
+    .fortune-trigrams {
+      font-size: 3em;
+      margin: 20px 0;
+      letter-spacing: 20px;
+    }
+    .fortune-level {
+      font-size: 2.5em;
+      color: #ff0000;
+      text-shadow: 0 0 15px #ff0000;
+    }
+    .close-modal {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #ffd700;
+      color: #1e1e2e;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-574TBJ2M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <header>
+    <h1>云岿山 <span>·</span> 随便观</h1>
+    <p style="font-size:1.6em; margin-top:20px;">卫非地澄辉坪 · 随便观赏师父与同门～</p>
+  </header>
+  
+  <main>
+    <h2 style="text-align:center; color:#ffd700; font-size:2.5em;">欢迎，记名弟子！</h2>
+    <p>这里是云岿山的据点——随便观。你可以放松下来，随便看看仪玄师父的术法风采，还有橘福福师姐、潘引壶师兄等同门的日常。</p>
+    <p>点击下面求一卦，像游戏里找阿朔一样，师父会为你起卦（结果随机，每次不同！这些互动都会通过 GTM 被 GA4 记录～）</p>
+    
+    <!-- 角色观赏图廊 -->
+    <div class="character-gallery">
+      <img src="https://pbs.twimg.com/media/GsKkFPfbkAAM7qi.jpg" alt="仪玄师父与同门" class="character-img">
+      <img src="https://pbs.twimg.com/media/GsVT21rWUAAu8PM.jpg" alt="仪玄师父" class="character-img">
+      <img src="https://assets.dearplayers.com/gplay-data/events/s-rank-agent-ju-fufu-is-here-6746239293-1280x720sr.jpg" alt="橘福福师姐" class="character-img">
+    </div>
+    
+    <div style="text-align:center; margin:50px 0;">
+      <button id="fortune-button">求一卦（模拟阿朔摇卦）</button>
+    </div>
+    
+    <p class="scroll-prompt">↓ 向下漫步云岿山，触发「深度观赏」事件</p>
+  </main>
+  
+  <footer>
+    <p>© 2026 云岿山 随便观 | 仅用于 GA4 学习 & 随便观赏</p>
+  </footer>
+  
+  <!-- 求卦结果模态框 -->
+  <div id="fortune-modal">
+    <div class="fortune-content">
+      <h2>仪玄师父悄然起卦……</h2>
+      <div class="fortune-trigrams" id="trigrams"></div>
+      <div class="fortune-level" id="level"></div>
+      <p id="title" style="font-size:1.8em; margin:20px 0;"></p>
+      <p id="desc" style="font-size:1.4em; line-height:1.8;"></p>
+      <button class="close-modal" onclick="document.getElementById('fortune-modal').style.display='none';">收起卦签</button>
+    </div>
+  </div>
+  
+  <script>
+    // 八卦符号
+    const trigrams = ['☰', '☱', '☲', '☳', '☴', '☵', '☶', '☷'];
+    
+    // 15个签文（还原游戏国风，随机吉凶）
+    const fortunes = [
+      { level: "上上签", title: "大吉大利", desc: "运势极佳，绳匠之路顺风顺水。空洞探索宝物自来，邦布相伴，仪玄师父微微一笑。" },
+      { level: "上签", title: "吉星高照", desc: "诸事顺心，同门助力强。橘福福师姐邀你共饮清茶，术法小成，指日可待。" },
+      { level: "上签", title: "青溟护佑", desc: "师父青溟鸟悄然守护，危难自解。今日宜下山行侠，积德行善。" },
+      { level: "中上签", title: "云岿稳固", desc: "山门安稳，修行渐入佳境。潘引壶师兄指点迷津，切勿急进。" },
+      { level: "中签", title: "平平安安", desc: "无大灾无大喜，日常祥和。街头随便逛逛，遇小惊喜。" },
+      { level: "中签", title: "福福相随", desc: "橘福福师姐运势加持，邦布格外可爱。宜多互动，收获欢乐。" },
+      { level: "中下签", title: "小有波折", desc: "空洞略有小怪，切勿独行。同门携手，可化险为夷。" },
+      { level: "下签", title: "谨慎行事", desc: "今日运势稍低，宜守不宜攻。静心参悟术法，待时而动。" },
+      { level: "下签", title: "以骸隐现", desc: "暗中有小祸，需警惕四周。仪玄师父提醒：心静自然凉。" },
+      { level: "下下签", title: "暂避锋芒", desc: "大凶之兆，空洞深险莫入。回山门闭关修行，静待转机。" },
+      { level: "上上签", title: "天火焕发", desc: "灵感爆发，术法大成。云岿山复兴在望，弟子当自强。" },
+      { level: "上签", title: "符箓显灵", desc: "自画符箓意外成功，师父难得赞许。运势上升，宜多练习。" },
+      { level: "中签", title: "澄辉坪闲逛", desc: "卫非地太平，街巷随意走走。遇故人叙旧，心情舒畅。" },
+      { level: "中上签", title: "叶瞬光助力", desc: "二师姐热心指路，冒险基金小增。宜接单行侠，积攒经验。" },
+      { level: "上上签", title: "玄墨贯通", desc: "贯穿万物，命破大成。仪玄师父传授秘技，指日可期。" }
+    ];
+    
+    document.getElementById('fortune-button').addEventListener('click', function() {
+      // 通过 dataLayer 推送事件（GTM 会捕捉并发送到 GA4）
+      dataLayer.push({
+        'event': 'click_button',
+        'button_name': '求一卦'
+      });
+      
+      // 随机三个卦象
+      const tri1 = trigrams[Math.floor(Math.random() * 8)];
+      const tri2 = trigrams[Math.floor(Math.random() * 8)];
+      const tri3 = trigrams[Math.floor(Math.random() * 8)];
+      document.getElementById('trigrams').textContent = tri1 + tri2 + tri3;
+      
+      // 随机签文
+      const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+      document.getElementById('level').textContent = fortune.level;
+      document.getElementById('title').textContent = fortune.title;
+      document.getElementById('desc').textContent = fortune.desc;
+      
+      // 推送签级事件
+      dataLayer.push({
+        'event': 'fortune_result',
+        'fortune_level': fortune.level
+      });
+      
+      // 显示模态框
+      document.getElementById('fortune-modal').style.display = 'flex';
+    });
+
+    // 滚动到90%触发事件（通过 dataLayer 推送）
+    window.addEventListener('scroll', function() {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.9) {
+        dataLayer.push({ 'event': 'scroll_90percent' });
+      }
+    }, { once: true });
+  </script>
+</body>
+</html>
